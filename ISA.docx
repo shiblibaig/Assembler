@@ -1,0 +1,179 @@
+ Instruction Set Architecture-
+We will have a 16 bit instruction size. The opcode will occupy first 8 bit, the rest will be for operands. Our ISA will have 16 registers. Data input will be absolute, all addresses will be 3 digit. Our ISA will have a program counter, and a flag register with the configuration- 
+
+Zero	Negative		Odd	Parity(E)	Carry	Aux. Carry	
+ 
+We need these type of instructions -
+•	Data Transfer – 
+1.	Move Direct (MVD 834add, 800add) - 00000001
+2.	Move Immediate (MVI 57data, R1reg) - 00000010
+3.	Move Register (MID R2reg, R1reg) - 00000011
+4.	Store Register (STO 57data, R1reg) - 00000100
+5.	Store Register Direct ( STD 800add, R1reg) - 00000101
+6.	Load Stack (PSH R1reg) - 00000110
+7.	Load Stack Direct (PSD 800add) - 00000111
+8.	Release Stack (POP R1reg) - 00001000
+9.	Release Stack Direct (PPD 800add) - 00001001
+10.	Input port (IPT 800add) - 00001010
+11.	Output port (OPT 800add) - 00001011
+12.	Load Program Counter (LPC 800add) – 00001100
+13.	Load Register in Register (LDR R1reg, R2reg) – 00001101
+•	Arithmetic Instruction –
+1.	Addition (SUM R1reg, 23data) - 00100000
+2.	Addition (SMD R1reg, R2reg) – 00100001
+3.	Difference (DEF R1reg, 23data) - 00100010
+4.	Difference (DFD R1reg, R2reg) - 00100011
+5.	Multiplication (MUL R1reg, 23data) - 0010010000
+6.	Multiplication (MLD R1reg, R2reg) – 00100101
+7.	Logical and (AND R1reg, R2reg) – 00100110
+8.	Logical or (OR R1reg, R2reg) – 00100111
+9.	Add Register (SMR 57data) - 00101000
+10.	Difference Register (DFR 57data) - 00101001
+•	Monadic Instruction-
+1.	Increment (ICR R1reg) - 01000000
+2.	Increment direct (IRD 800add) - 01000001
+3.	Increment Immediate (IRI 57data) - 01000010
+4.	Decrement (DCR R1reg) - 01000011
+5.	Decrement direct (DRD 800add) - 01000100
+6.	Decrement Immediate (DRI 57data¬) -01000101
+7.	Square (SQR R1reg) - 01000110
+8.	Square direct (SQD 800add) - 01000111
+9.	Square Immediate (SQI 57data)  - 01001000
+10.	Rotation right (RTR R1reg)- 01001001
+11.	Rotation left (RTL R1reg(- 01001010
+12.	Shift left (SFL R1reg)- 01001011
+13.	Shift right (SFR R1reg) - 01001100
+14.	Shift Left direct (STL 800add) - 01001101
+15.	Shift Right direct (STR 800add) - 01001110
+16.	Jump if Carry (JPC 800add)- 01001111
+17.	Jump if no Carry (JNC 800add) - 01010000
+18.	Jump if Positive (JPP 800add)- 01010001
+19.	Jump if Negative (JPN 800¬add)- 01010010
+20.	Jump if Zero (JPZ 800add)- 01010011
+21.	Jump if no Zero (JNZ 800add)- 01010100
+22.	Jump is P Even (JPE 800add)- 01010101
+23.	Jump if P Odd (JPO 800add) -01010110
+24.	Call if Carry (CLC 800add) -01010111
+25.	Call if no Carry (CNC 800add)- 01011000
+26.	Call if Positive (CLP 800add) - 01011001
+27.	Call if Negative (CLN 800¬add) - 01011010
+28.	Call if Zero (CLZ 800add) – 01011011
+29.	Call if no Zero (CNZ 800add)- 01011100
+30.	Call if P Even (CLE 800add)- 01011101
+31.	Call if P Odd (CLO 800add)- 01011110
+32.	Return if Carry (RTC) - 01011111
+33.	Return if no Carry (RNC) - 01100000
+34.	Return if Positive (RTP)- 01100001
+35.	Return if Negative (RTN)- 01100010
+36.	Return if Zero (RTZ) - 01100011
+37.	Return if no Zero (RNZ) - 01100100
+38.	Return is Even (RTE) - 01100101
+39.	Return if Odd (RTO ) - 01100110
+40.	Halt (HLT) - 01100111
+41.	Clear Screen (CLS) – 01101000
+42.	Jump if Carry (JPC Llabel)- 01101001
+43.	Jump if no Carry (JNC Llabel) - 01101010
+44.	Jump if Positive (JPP Llabel)- 01101011
+45.	Jump if Negative (JPN Llabel)- 01101100
+46.	Jump if Zero (JPZ Llabel)- 01101101
+47.	Jump if no Zero (JNZ Llabel)- 01101110
+48.	Jump is P Even (JPE Llabel)- 01101111
+49.	Jump if P Odd (JPO Llabel) -01110000
+50.	Call if Carry (CLC Llabel) -01110001
+51.	Call if no Carry (CNC Llabel)- 01110010
+52.	Call if Positive (CLP Llabel) - 01110011
+53.	Call if Negative (CLN Llabel) - 01110100
+54.	Call if Zero (CLZ Llabel) – 01110101
+55.	Call if no Zero (CNZ Llabel)- 01110110
+56.	Call if P Even (CLE Llabel)- 01110111
+57.	Call if P Odd (CLO Llabel)- 01111000
+58.	Set Zero (STZ ) – 01111001
+59.	Set Carry (STC) – 01111010
+60.	Set Negative (STN) – 01111011
+We need these type of instructions -
+•	Data Transfer – 
+1.	Move Immediate (MVI 57data, R1reg) – 00000010
+2.	Move Register (MID R2reg, R1reg) – 00000011
+3.	Load Stack (PSH R1reg) – 00000110
+4.	Release Stack (POP R1reg) – 00001000
+5.	Store Register (STO 57data, R1reg) - 00000100
+6.	Store Register Direct ( STD 800add, R1reg) – 00000101
+7.	Load Register in Register (LDR R1reg, R2reg) – 00001101
+8.	Increment direct (IRD 800add) - 00000001
+9.	Decrement direct (DRD 800add) - 00000000
+10.	Load Stack Direct (PSD 800add) - 00000111
+11.	Release Stack Direct (PPD 800add) - 00001001
+12.	Input port (IPT 800add) - 00001010
+13.	Output port (OPT 800add) - 00001011
+14.	Load Program Counter (LPC 800add) – 00001100
+15.	Shift Left direct (STL 800add) - 00001110
+16.	Shift Right direct (STR 800add) - 00001111
+17.	Jump if Carry (JPC 800add)- 00010000
+18.	Jump if no Carry (JNC 800add) - 00010001
+19.	Jump if Positive (JPP 800add)- 00010010
+20.	Jump if Negative (JPN 800¬add)- 00010011
+21.	Jump if Zero (JPZ 800add)- 00010100
+22.	Jump if no Zero (JNZ 800add)- 00010101
+23.	Jump is P Even (JPE 800add)- 00010110
+24.	Jump if P Odd (JPO 800add) -00010111
+25.	Call if Carry (CLC 800add) -00011000
+26.	Call if no Carry (CNC 800add)- 00011001
+27.	Call if Positive (CLP 800add) - 00011010
+28.	Call if Negative (CLN 800¬add) - 00011011
+29.	Call if Zero (CLZ 800add) – 00011100
+30.	Call if no Zero (CNZ 800add)- 00011101
+31.	Call if P Even (CLE 800add)- 00011110
+32.	Call if P Odd (CLO 800add)- 00011111
+•	Arithmetic Instruction –
+33.	Addition (SUM R1reg, 23data) - 00100000
+34.	Difference (DEF R1reg, 23data) - 00100010
+35.	Multiplication (MUL R1reg, 23data) – 0010010000
+36.	Addition (SMD R1reg, R2reg) – 00100001
+37.	Difference (DFD R1reg, R2reg) - 00100011
+38.	Multiplication (MLD R1reg, R2reg) – 00100101
+39.	Logical AND (AND R1reg, R2reg) – 00100110
+40.	Logical OR (ORR R1reg, R2reg) – 00100111
+41.	Add Register (SMR 57data) - 00101000
+42.	Difference Register (DFR 57data) - 00101001
+•	Monadic Instruction-
+43.	Increment Immediate (IRI 57data) - 01000010
+44.	Decrement Immediate (DRI 57data¬) -01000101
+45.	Square Immediate (SQI 57data)  - 01001000
+46.	Decrement (DCR R1reg) - 01000011
+47.	Square (SQR R1reg) - 01000110
+48.	Increment (ICR R1reg) - 01000000
+49.	Rotation right (RTR R1reg)- 01001001
+50.	Rotation left (RTL R1reg)- 01001010
+51.	Shift left (SFL R1reg)- 01001011
+52.	Shift right (SFR R1reg) - 01001100
+53.	Return if Carry (RTC) - 01011111
+54.	Return if no Carry (RNC) - 01100000
+55.	Return if Positive (RTP)- 01100001
+56.	Return if Negative (RTN)- 01100010
+57.	Return if Zero (RTZ) - 01100011
+58.	Return if no Zero (RNZ) - 01100100
+59.	Return is Even (RTE) - 01100101
+60.	Return if Odd (RTO ) - 01100110
+61.	Halt (HLT) - 01100111
+62.	Clear Screen (CLS) – 01101000
+63.	Set Zero (STZ ) – 01111001
+64.	Set Carry (STC) – 01111010
+65.	Set Negative (STN) – 01111011
+66.	Jump if Carry (JJC Llabel)- 01101001
+67.	Jump if no Carry (PNC Llabel) - 01101010
+68.	Jump if Positive (JJP Llabel)- 01101011
+69.	Jump if Negative (JJN Llabel)- 01101100
+70.	Jump if Zero (JJZ Llabel)- 01101101
+71.	Jump if no Zero (PNZ Llabel)- 01101110
+72.	Jump is P Even (JJE Llabel)- 01101111
+73.	Jump if P Odd (JJO Llabel) -01110000
+74.	Call if Carry (CCC Llabel) -01110001
+75.	Call if no Carry (LNC Llabel)- 01110010
+76.	Call if Positive (CCP Llabel) - 01110011
+77.	Call if Negative (CCN Llabel) - 01110100
+78.	Call if Zero (CCZ Llabel) – 01110101
+79.	Call if no Zero (LNZ Llabel)- 01110110
+80.	Call if P Even (CCE Llabel)- 01110111
+81.	Call if P Odd (CCO Llabel)- 01111000
+82.	Start (STT) – 01111001
+83.	End (END) – 88888888 
